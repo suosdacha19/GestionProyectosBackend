@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { initializeApp, applicationDefault } = require('firebase-admin/app');
+const admin = require('firebase-admin');
 const { getFirestore } = require('firebase-admin/firestore');
 
 initializeApp({
@@ -7,7 +8,10 @@ initializeApp({
 })
 
 const db = getFirestore();
+const getAuth = admin.auth();
 
 module.exports = {
-    db
+    db,
+    getAuth,
+    admin
 };
