@@ -1,5 +1,4 @@
 const { db, admin } = require('../../../../firebase')
-const dayjs = require("dayjs");
 
 module.exports = async (payload) => {
     let newsInvoices = []

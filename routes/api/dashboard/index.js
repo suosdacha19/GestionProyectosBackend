@@ -5,6 +5,9 @@ module.exports = router.use(
     '/',
     // authorization,
     [
-        require('./getMargenBruto.router')
+        require('./getMargenBruto.router'),
+        require('./getInventarioPromedio.router'),
+        require('./getTopTres.router'),
+        require('./getVendidosPorcentaje.router'),
     ]
 );
