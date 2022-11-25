@@ -44,7 +44,7 @@ module.exports = async (anio) => {
         arrayLabels.push(index)
         let promedio = 0
         for (const a of Object.values(result[index])) {
-            promedio += a
+            promedio += parseInt(a)
         }
         arrayResult.push(Math.trunc(promedio / 12))
         promedio = 0

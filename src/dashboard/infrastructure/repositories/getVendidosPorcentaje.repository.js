@@ -45,7 +45,7 @@ module.exports = async (anio) => {
 
     if (result) {
         result.map(factura => {
-            porcentajeTotal += factura.cantidad
+            porcentajeTotal += parseInt(factura.cantidad)
         })
 
         result = _.groupBy(result, factura => factura.idProducto);
@@ -54,7 +54,7 @@ module.exports = async (anio) => {
             let cantidadTemp = 0
             labels.push(index)
             item.map(factura => {
-                cantidadTemp += factura.cantidad
+                cantidadTemp += parseInt(factura.cantidad)
             })
             porcentajeIndividual.push(parseFloat(((cantidadTemp * 100) / porcentajeTotal).toFixed(2)))
             cantidadTemp = 0
