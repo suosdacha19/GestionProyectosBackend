@@ -43,20 +43,22 @@ module.exports = async (anio) => {
     delete result[2] // Eliminamos los productos que se compraron
     result = result[1] // Nos quedamos con los productos que se vendieron
 
-    result.map(factura => {
-        porcentajeTotal += factura.cantidad
-    })
-
-    result = _.groupBy(result, factura => factura.idProducto);
-
-    for (const [index, item] of Object.entries(result)) {
-        let cantidadTemp = 0
-        labels.push(index)
-        item.map(factura => {
-            cantidadTemp += factura.cantidad
+    if (result) {
+        result.map(factura => {
+            porcentajeTotal += factura.cantidad
         })
-        porcentajeIndividual.push(parseFloat(((cantidadTemp * 100) / porcentajeTotal).toFixed(2)))
-        cantidadTemp = 0
+
+        result = _.groupBy(result, factura => factura.idProducto);
+
+        for (const [index, item] of Object.entries(result)) {
+            let cantidadTemp = 0
+            labels.push(index)
+            item.map(factura => {
+                cantidadTemp += factura.cantidad
+            })
+            porcentajeIndividual.push(parseFloat(((cantidadTemp * 100) / porcentajeTotal).toFixed(2)))
+            cantidadTemp = 0
+        }
     }
 
     return {
